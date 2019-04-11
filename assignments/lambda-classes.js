@@ -42,10 +42,9 @@ class Student extends Instructor {
         this.favSubjects = grandChild.favSubjects;
         this.grade = grandChild.grade
     }
-    listsSubjects(favSubjects) {
-        
+    listsSubjects(favSubjects) { 
         for (let i = 0; i < favSubjects.length; i++) {
-            console.log(favSubjects[i])
+            console.log(favSubjects[i]);
         }
     }
     PRAssignment(favSubjects) {
