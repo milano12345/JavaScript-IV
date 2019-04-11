@@ -24,11 +24,11 @@ class Instructor extends Person {
         this.favLanguage = childAttrs.favLanguage;
         this.catchPhrase = childAttrs.catchPhrase;
     }
-    demo(subject) {
-        return `Today we are learning about ${this.subject} where the subject is the param passed in.`
-    } s
-    grade(student, subject) {
-        console.log(`${this.student.name} receives a perfect score on ${this.subject}`)
+    demo(favSubject) {
+        return `Today we are learning about ${favSubject} where the subject is the param passed in.`
+    }
+    gradesWork(student,favSubjects) {
+        return `${student.name} receives a 100 on his project for ${favSubjects}`
     }
 }
 
@@ -42,14 +42,16 @@ class Student extends Instructor {
         this.favSubjects = grandChild.favSubjects;
         this.grade = grandChild.grade
     }
-    listsSubjects(subject) {
-        console.log(this.student.favSubjects)
+    listsSubjects(favSubjects) {
+        for (index = 0; index < a.length; ++index) {
+            console.log(a[index]);
+        }
     }
-    PRAssignment(subject) {
-        console.log(`${this.student.name} has submitted a PR for ${this.subject}`)
+    PRAssignment(favSubjects) {
+        return `${this.name} has submitted a PR for ${favSubjects}`
     }
-    sprintChallenge(subject) {
-        console.log(`${this.student.name} has begun sprint challenge on ${this.subject}`)
+    sprintChallenge(favSubjects) {
+        return `${this.name} has begun sprint challenge on ${favSubjects}`
     }
 }
 
@@ -62,10 +64,10 @@ class ProjectManagers extends Student {
         this.favInstructor = grtgrandChild.favInstructor;
     }
     standUp(slackChannel) {
-        console.log(`${this.name} announces to ${this.slackChannel}, @channel standup times!`)
+        return `${this.name} announces to ${slackChannel}, @channel standup times!`
     }
-    debugsCode() {
-        console.log(`${this.name} debugs ${student.name}'s code on ${this.subject}`)
+    debugsCode(student,favSubjects) {
+        return `${this.name} debugs ${student.name}'s code on ${favSubjects}`
     }
 }
 
@@ -116,28 +118,37 @@ const jill = new Instructor({
 // Students /
 
 const daniel = new Student({
+    name: 'Daniel',
+    location: 'KC',
     previousBackground: 'Bartending',
-    className: 'Web19',
-    grade: 'A'
+    className: 'Full-Stack',
+    favSubjects: ['Html', 'CSS', 'JavaScript'],
+    grade: '100'
 });
 
 const michelle = new Student({
+    name: 'michelle',
+    location: 'DC',
     previousBackground: 'Childcare',
-    className: 'Web19',
-    grade: 'A'
+    className: 'Full-stack',
+    favSubjects: ['Html', 'CSS', 'JavaScript'],
 });
 
 const mike = new Student({
+    name: 'mike',
     previousBackground: 'Nurse',
-    className: 'Web19',
-    grade: 'A'
+    className: 'Full-Stack',
+    slackChannel: 'Web19',
+    favSubjects: ['Html', 'CSS', 'JavaScript'],
 });
 
 // Project Managers/
 
 const cj = new ProjectManagers({
+    name: 'CJ',
     gradClassName: 'Web15',
-    favInstructor: 'Josh'
+    favInstructor: 'Josh',
+    slackChannel: 'Web19',
 })
 
 const sam = new ProjectManagers({
@@ -149,3 +160,17 @@ const larry = new ProjectManagers({
     gradClassName: 'Web12',
     favInstructor: 'Josh'
 })
+
+// Testing Arena/
+console.log(daniel.previousBackground);
+console.log(cj.gradClassName);
+console.log(cj.standUp('Groupthink'));
+console.log(sam.gradClassName);
+console.log(cj.debugsCode(daniel,daniel.favSubjects[1]))
+console.log(daniel.PRAssignment(daniel.favSubjects[2]))
+console.log(fred.catchPhrase)
+console.log(daniel.grade)
+console.log(daniel.sprintChallenge(daniel.favSubjects[2]))
+console.log(daniel.speak())
+console.log(josh.demo(daniel.favSubjects[1]))
+console.log(fred.gradesWork(daniel,daniel.favSubjects[2]))
