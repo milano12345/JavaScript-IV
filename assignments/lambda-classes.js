@@ -43,8 +43,9 @@ class Student extends Instructor {
         this.grade = grandChild.grade
     }
     listsSubjects(favSubjects) {
-        for (index = 0; index < a.length; ++index) {
-            console.log(a[index]);
+        
+        for (let i = 0; i < favSubjects.length; i++) {
+            console.log(favSubjects[i])
         }
     }
     PRAssignment(favSubjects) {
@@ -164,7 +165,7 @@ const larry = new ProjectManagers({
 // Testing Arena/
 console.log(daniel.previousBackground);
 console.log(cj.gradClassName);
-console.log(cj.standUp('Groupthink'));
+console.log(cj.standUp('Web19-CJ'));
 console.log(sam.gradClassName);
 console.log(cj.debugsCode(daniel,daniel.favSubjects[1]))
 console.log(daniel.PRAssignment(daniel.favSubjects[2]))
@@ -173,4 +174,5 @@ console.log(daniel.grade)
 console.log(daniel.sprintChallenge(daniel.favSubjects[2]))
 console.log(daniel.speak())
 console.log(josh.demo(daniel.favSubjects[1]))
+daniel.listsSubjects(daniel.favSubjects)
 console.log(fred.gradesWork(daniel,daniel.favSubjects[2]))
